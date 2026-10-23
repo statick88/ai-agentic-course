@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Curso introductorio independiente sobre IA y sistemas agénticos.">
+  <meta name="author" content="Diego Medardo Saavedra García">
+  <title>De token a agente | Curso de IA</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/timeline.css">
+</head>
+<body>
+  <a class="skip-link" href="#course">Saltar al curso</a>
+  <header class="topbar">
+    <p class="eyebrow">CURSO INDEPENDIENTE · IA / SISTEMAS AGÉNTICOS</p>
+    <h1>De token a agente</h1>
+    <p class="lede">Una ruta histórica y práctica para comprender antes de automatizar.</p>
+    <a class="source-link" href="SOURCES.md">Fuentes</a>
+  </header>
+
+  <main id="course" tabindex="-1">
+    <noscript><p class="notice">JavaScript es opcional: el contenido completo permanece disponible para lectura continua.</p></noscript>
+    <details class="module-menu">
+      <summary>Índice de módulos</summary>
+      <nav class="module-index" aria-label="Módulos del curso">
+        <a href="#m1-bienvenida">01 Historia</a>
+        <a href="#m2-fundamentos">02 Fundamentos</a>
+        <a href="#m3-llm">03 LLM</a>
+        <a href="#m4-agentes">04 Agentes</a>
+        <a href="#m5-metodos">05 Métodos</a>
+        <a href="#m6-ecosistema">06 Ecosistema</a>
+        <a href="SOURCES.md">Fuentes y lecturas</a>
+      </nav>
+    </details>
+
+    <section class="slides" aria-label="Diapositivas del curso">
+      <article class="slide timeline-slide" id="m1-bienvenida">
+        <p class="kicker">MÓDULO 01 · HISTORIA Y RECORRIDO</p>
+        <h2>Historia de la IA: de neuronas lógicas a sistemas de IA agéntica.</h2>
+        <p>Hitos y continuidades: reglas, aprendizaje, LLM y sistemas compuestos.</p>
+        <figure class="history-timeline" aria-labelledby="history-caption">
+          <ol class="timeline-events">
+            <li><time datetime="1943">1943</time><h3>Neuronas lógicas</h3><details><summary>Contexto y fuente</summary><p>McCulloch y Pitts conectaron actividad neuronal idealizada y lógica computable: un antecedente relevante, no el origen único de la disciplina. <a href="https://doi.org/10.1007/BF02478259">Fuente primaria (DOI)</a>.</p></details></li>
+            <li><time datetime="1950">1950</time><h3>Pregunta de Turing</h3><details><summary>Contexto y fuente</summary><p>El “juego de imitación” abrió una pregunta operacional sobre máquinas y pensamiento; no es una prueba definitiva de comprensión o conciencia. <a href="https://academic.oup.com/mind/article/LIX/236/433/986238">“Computing Machinery and Intelligence”</a>.</p></details></li>
+            <li><time datetime="1955">1955–1956</time><h3>Dartmouth</h3><details><summary>Contexto y fuente</summary><p>La propuesta de 1955 y el encuentro de 1956 consolidaron el nombre “artificial intelligence”: un punto de organización, no un único “primer paper”. <a href="https://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html">Documentos de Dartmouth</a>.</p></details></li>
+            <li><time datetime="1958">1958</time><h3>Perceptrón</h3><details><summary>Contexto y fuente</summary><p>Popularizó aprender una frontera de clasificación desde ejemplos; sus límites conocidos impulsaron investigación posterior. <a href="https://doi.org/10.1037/h0042519">Rosenblatt, “The Perceptron”</a>.</p></details></li>
+            <li><time datetime="1970">1970–1980</time><h3>Reglas e inviernos</h3><details><summary>Contexto y fuente</summary><p>Los enfoques simbólicos y sistemas expertos hicieron explícito el conocimiento; los inviernos de IA enfriaron promesas sin resultados sostenibles. MYCIN ilustra reglas útiles en dominios delimitados y costosas de mantener. <a href="https://pubmed.ncbi.nlm.nih.gov/7110796/">Revisión de MYCIN</a>.</p></details></li>
+            <li><time datetime="1986">1986</time><h3>Retropropagación</h3><details><summary>Contexto y fuente</summary><p>El influyente artículo de 1986 ayudó a hacer más práctico entrenar redes multicapa; no fue el origen exclusivo de la idea. <a href="https://www.nature.com/articles/323533a0">Artículo en Nature</a>.</p></details></li>
+            <li><time datetime="1997">1997</time><h3>Deep Blue</h3><details><summary>Contexto y fuente</summary><p>Venció a Kasparov bajo reglas y objetivos de ajedrez: rendimiento específico extraordinario, no inteligencia general. <a href="https://www.ibm.com/history/deep-blue">Historia de IBM</a>.</p></details></li>
+            <li><time datetime="2012">2012</time><h3>AlexNet</h3><details><summary>Contexto y fuente</summary><p>Mostró el impacto de redes profundas, datos y aceleración en visión; también visibilizó costos de cómputo y datos. <a href="https://dl.acm.org/doi/10.1145/3065386">Artículo de AlexNet</a>.</p></details></li>
+            <li><time datetime="2017">2017</time><h3>Transformer</h3><details><summary>Contexto y fuente</summary><p>La atención pasó a ser central para modelar secuencias e influyó en los modelos de lenguaje modernos. <a href="https://arxiv.org/abs/1706.03762">“Attention Is All You Need”</a>.</p></details></li>
+            <li><time datetime="2018">2018–2022</time><h3>Expansión de LLM</h3><details><summary>Contexto y fuente</summary><p>La escala amplió capacidades generativas y necesidades de evaluación y control; no garantiza veracidad ni comprensión. <a href="https://arxiv.org/abs/2005.14165">GPT-3</a>.</p></details></li>
+            <li><time datetime="2022">2022</time><h3>ReAct y sistemas</h3><details><summary>Contexto y fuente</summary><p>ReAct articuló razonamiento y acciones para usar herramientas. Los sistemas agénticos integran modelo, memoria, herramientas y controles: integración y diseño operativo, no la invención reciente de los agentes. <a href="https://arxiv.org/abs/2210.03629">Artículo ReAct</a>.</p></details></li>
+          </ol>
+          <figcaption id="history-caption">Cada marcador es una contribución: las ideas anteriores no desaparecen.</figcaption>
+        </figure>
+        <details><summary>Nota de estudio</summary><p>Objetivo ampliado: reconocer continuidades entre reglas, aprendizaje y modelos de lenguaje; distinguir hitos de promesas; y situar los sistemas actuales como integración de componentes. Esta cronología no busca un “primer paper” universal: ayuda a evaluar anuncios actuales con evidencia, condiciones y límites. La herramienta propone; la persona conserva criterio y responsabilidad.</p></details>
+      </article>
+
+      <article class="slide" id="m2-fundamentos">
+        <p class="kicker">MÓDULO 02 · FUNDAMENTOS</p>
+        <h2>Comprender IA evita confundir una interfaz con inteligencia.</h2>
+        <p>Objetivos: distinguir IA, ML, aprendizaje profundo, IA generativa y LLM; reconocer límites; iniciar el ejemplo continuo de un cuestionario Python.</p>
+        <figure class="diagram"><span>problema</span><b>→</b><span>modelo</span><b>→</b><span>respuesta</span><b>→</b><span>verificación humana</span></figure>
+      </article>
+
+      <article class="slide" id="m2-prerrequisitos">
+        <h2>Una pregunta precisa es el primer control de calidad.</h2>
+        <p>No hace falta programar para empezar; sí conviene separar hecho, instrucción, ejemplo y resultado esperado.</p>
+        <pre><code>Objetivo: practicar listas en Python
+Evidencia: 3 preguntas respondidas y explicadas</code></pre>
+        <details><summary>Autochequeo: ¿qué falta?</summary><p><strong>Respuesta:</strong> criterios para decidir si una respuesta es correcta, no solo una petición amplia.</p></details>
+      </article>
+
+      <article class="slide" id="m2-ia">
+        <h2>La IA reúne técnicas para realizar tareas asociadas al razonamiento o la percepción.</h2>
+        <p>No es una sola tecnología ni garantiza comprensión humana. Puede clasificar, predecir, buscar, traducir o generar según su diseño.</p>
+      </article>
+
+      <article class="slide" id="m2-categorias">
+        <h2>ANI es real; AGI y ASI son categorías hipotéticas, no capacidades demostradas universales.</h2>
+        <p>La IA estrecha se optimiza para dominios delimitados. “AGI” y “ASI” describen ideas de alcance general o superior y requieren cautela.</p>
+        <details><summary>Autochequeo: ¿un chatbot actual es AGI?</summary><p><strong>Respuesta:</strong> no se sigue de que converse bien; una demostración localizada no prueba capacidad general autónoma.</p></details>
+      </article>
+
+      <article class="slide" id="m2-relaciones">
+        <h2>ML aprende patrones; deep learning usa redes con capas; la IA generativa y los LLM son aplicaciones especializadas.</h2>
+        <figure class="diagram three"><span>IA<br>técnicas para tareas</span><span>ML → deep learning<br>patrones → redes multicapa</span><span>generativa → LLM<br>salidas → texto</span><figcaption>Las categorías se relacionan, pero ninguna etiqueta garantiza exactitud ni comprensión.</figcaption></figure>
+        <p>Un LLM es un tipo de modelo generativo de lenguaje; no toda IA generativa es un LLM y no todo ML es deep learning.</p>
+      </article>
+
+      <article class="slide" id="m2-ml">
+        <h2>El aprendizaje automático ajusta un modelo a patrones observados.</h2>
+        <p>En el cuestionario, un sistema podría estimar qué ejercicio proponer según errores previos; eso no equivale a saber por qué aprende cada estudiante.</p>
+      </article>
+
+      <article class="slide" id="m2-generativa">
+        <h2>La IA generativa produce nuevas secuencias condicionadas por una entrada.</h2>
+        <p>Texto, código, imagen o audio pueden ser salidas. Generar una pregunta Python plausible no demuestra que su solución sea correcta.</p>
+      </article>
+
+      <article class="slide" id="m3-llm">
+        <p class="kicker">MÓDULO 03 · LLM</p>
+        <h2>Un LLM predice continuaciones de tokens dentro de un contexto finito.</h2>
+        <p>Objetivos: explicar token, entrenamiento, inferencia, contexto y alucinación; diseñar revisión para el cuestionario Python.</p>
+      </article>
+
+      <article class="slide" id="m3-tokens">
+        <h2>Los tokens son unidades que el modelo procesa, no siempre palabras completas.</h2>
+        <p>Una solicitud se fragmenta, se representa y se usa para estimar la siguiente unidad. Esto explica por qué longitud y redacción importan.</p>
+      </article>
+
+      <article class="slide" id="m3-entrenamiento">
+        <h2>El entrenamiento ajusta parámetros con datos; la inferencia usa esos parámetros.</h2>
+        <p>Pedir un ejercicio es inferencia, no una actualización inmediata de los pesos del modelo.</p>
+      </article>
+
+      <article class="slide" id="m3-contexto">
+        <h2>El contexto limita qué información puede considerar una respuesta en una interacción.</h2>
+        <pre><code>Nivel: principiante
+Tema: listas
+Pide: pregunta, solución y explicación breve</code></pre>
+        <p>Un contexto largo tampoco garantiza que cada detalle sea seguido perfectamente.</p>
+      </article>
+
+      <article class="slide" id="m3-limites">
+        <h2>Una alucinación es una salida plausible que no está respaldada de forma fiable.</h2>
+        <p>Los LLM pueden errar hechos, código, citas o cálculos. Verifique fuentes, ejecute pruebas y no delegue decisiones de alto impacto sin controles.</p>
+        <details><summary>Autochequeo: ¿respuesta fluida = respuesta cierta?</summary><p><strong>Respuesta:</strong> no; la fluidez lingüística no es evidencia independiente.</p></details>
+      </article>
+
+      <article class="slide" id="m4-agentes">
+        <p class="kicker">MÓDULO 04 · AGENTES</p>
+        <h2>Un agente combina modelo, estado, herramientas y una política de ejecución.</h2>
+        <p>Objetivos: separar workflow y agente; entender harness, skills, MCP y orquestación con límites claros.</p>
+      </article>
+
+      <article class="slide" id="m4-workflows">
+        <h2>Un workflow fija pasos; un agente decide próximos pasos dentro de límites definidos.</h2>
+        <figure class="diagram split"><span>workflow<br>validar → generar → revisar</span><span>agente<br>observar → decidir → actuar → comprobar</span><figcaption>Para el quiz, un workflow suele bastar si las reglas son estables.</figcaption></figure>
+      </article>
+
+      <article class="slide" id="m4-harness">
+        <h2>El harness encuadra al modelo con contexto, herramientas y guardas.</h2>
+        <p>“Hardness” aquí se interpreta como <em>harness</em>: no es una capacidad mágica, sino diseño de límites, permisos y retroalimentación.</p>
+        <details><summary>Autochequeo: ¿el harness concede permisos?</summary><p><strong>Respuesta:</strong> no por sí mismo; los permisos deben ser definidos y aplicados por el sistema.</p></details>
+      </article>
+
+      <article class="slide" id="m4-skills">
+        <h2>Una skill aporta instrucciones y procedimientos reutilizables para una tarea delimitada.</h2>
+        <p>Una skill de revisión puede exigir ejecutar el quiz, explicar errores y citar fuentes. No reemplaza juicio ni autorización humana.</p>
+      </article>
+
+      <article class="slide" id="m4-mcp">
+        <h2>MCP estandariza cómo un cliente descubre y usa capacidades externas; no concede permisos.</h2>
+        <p>El protocolo no convierte una herramienta en segura: identidad, autorización, validación y alcance siguen siendo responsabilidades del sistema.</p>
+        <figure class="diagram"><span>cliente</span><b>↔</b><span>servidor MCP</span><b>↔</b><span>herramienta con controles</span></figure>
+        <p><a href="https://modelcontextprotocol.io">Consultar documentación de MCP</a></p>
+      </article>
+
+      <article class="slide" id="m4-orquestador">
+        <h2>Un orquestador coordina tareas, estado y evidencia entre componentes.</h2>
+        <p>En el quiz: generar borrador → ejecutar ejemplos → pedir revisión → presentar evidencia. Más componentes aumentan coordinación y superficie de fallo.</p>
+      </article>
+
+      <article class="slide" id="m5-metodos">
+        <p class="kicker">MÓDULO 05 · MÉTODOS</p>
+        <h2>SDD, ODD y RDD tienen propósitos distintos para convertir intención en evidencia revisable.</h2>
+        <p>Objetivos: especificar el quiz Python, administrar incertidumbre y obtener evidencia independiente sin confundir estos métodos con una secuencia universal.</p>
+      </article>
+
+      <article class="slide" id="m5-sdd">
+        <h2>SDD significa Spec-Driven Development: empezar con una especificación y criterios de aceptación verificables.</h2>
+        <pre><code>Especificación: quiz de listas para principiantes
+Aceptación: 3 preguntas; soluciones ejecutables;
+explica cada error frecuente.</code></pre>
+        <p>Su propósito es reducir ambigüedad antes de implementar.</p>
+      </article>
+
+      <article class="slide" id="m5-odd">
+        <h2>ODD significa Organic Driven Development: adapta el esfuerzo al riesgo y a la incertidumbre.</h2>
+        <figure class="timeline seven"><span>Autorizar</span><span>Explorar</span><span>Resolver incertidumbre</span><span>Clasificar</span><span>Registrar trabajo sustancial</span><span>Implementar y verificar</span><span>Cerrar</span><figcaption>Fases oficiales descritas por la documentación de Gentle AI; no son pasos inventados ni sustituyen las decisiones humanas.</figcaption></figure>
+        <p><a href="https://github.com/Gentleman-Programming/gentle-ai/blob/main/docs/usage.md">Leer documentación ODD/RDD de Gentle AI</a></p>
+      </article>
+
+      <article class="slide" id="m5-rdd">
+        <h2>RDD significa Receipt-Driven Development: exige evidencia independiente sobre un candidato congelado.</h2>
+        <p>Una revisión externa o evidencia independiente evalúa un candidato sin cambiarlo. RDD no sustituye pruebas ni autoriza entrega, publicación o despliegue.</p>
+        <details><summary>Autochequeo: ¿una revisión RDD permite publicar?</summary><p><strong>Respuesta:</strong> no; la autorización de entrega es una decisión separada.</p></details>
+      </article>
+
+      <article class="slide" id="m6-ecosistema">
+        <p class="kicker">MÓDULO 06 · ECOSISTEMA</p>
+        <h2>El ecosistema coordina prácticas, no transfiere responsabilidad al modelo.</h2>
+        <p>Objetivos: ubicar Gentle AI, Gentle Shell y Engram sin inventar comandos, versiones o capacidades.</p>
+      </article>
+
+      <article class="slide" id="m6-libro">
+        <h2>El capítulo “De Token a Agente” conecta modelo, contexto, harness, conocimiento y patrones.</h2>
+        <p>Esta explicación original toma ese recorrido como lectura complementaria: modelo → inferencia → presupuesto de contexto → harness → conocimiento (skills y memoria) → patrones → proceso. El capítulo no se atribuye ODD ni RDD.</p>
+        <p><a href="https://the-amazing-gentleman-programming-book.vercel.app/es/book/Chapter20_From-Token-to-Agent">Leer “De Token a Agente”</a></p>
+      </article>
+
+      <article class="slide" id="m6-gentle">
+        <h2>Gentle AI documenta prácticas de desarrollo guiado, incluida la convención ODD/RDD.</h2>
+        <p>Use la documentación oficial como fuente de convenciones. La rama principal puede contener cambios no publicados; compruebe el contexto antes de adoptar una práctica.</p>
+      </article>
+
+      <article class="slide" id="m6-shell">
+        <h2>Gentle Shell se describe públicamente como un shell de desarrollo controlado, nativo de Pi.</h2>
+        <p>Su papel es encuadrar el trabajo de desarrollo; esta presentación no inventa comandos ni asume una versión instalada.</p>
+        <p><a href="https://github.com/Gentleman-Programming/gentle-shell">Abrir README de Gentle Shell</a></p>
+      </article>
+
+      <article class="slide" id="m6-engram">
+        <h2>Engram se describe públicamente como memoria persistente agnóstica al agente, distinta de los pesos del modelo.</h2>
+        <figure class="diagram split"><span>pesos del modelo<br>parámetros entrenados</span><span>memoria persistente<br>hechos o contexto guardados</span></figure>
+        <p>Guardar memoria requiere criterios de privacidad, vigencia y procedencia.</p>
+        <p><a href="https://github.com/Gentleman-Programming/engram">Abrir README de Engram</a></p>
+      </article>
+
+      <article class="slide" id="m6-cierre">
+        <h2>El criterio final es una cadena de evidencia, no una respuesta impresionante.</h2>
+        <p>Para el quiz Python: defina aceptación, genere un borrador, ejecute el código, explique resultados, revise de forma independiente y decida explícitamente qué entregar.</p>
+        <details open><summary>Chequeo final</summary><p><strong>¿Qué harás primero?</strong> Escribir un objetivo verificable y una condición de aceptación antes de pedir generación.</p></details>
+        <p>Autor: <a href="https://statick88.github.io">Diego Medardo Saavedra García</a>.</p>
+      </article>
+    </section>
+
+    <aside class="source-access" aria-label="Fuentes y lecturas">
+      <h2>Fuentes y lecturas</h2>
+      <p>Las fuentes de cada hito están enlazadas en sus diapositivas. Consulte la <a href="SOURCES.md">lista completa de fuentes y notas de atribución</a> para historia, ecosistema y preparación de publicación.</p>
+    </aside>
+  </main>
+
+  <footer class="controls" aria-label="Controles de presentación">
+    <button type="button" data-action="previous">← Anterior</button>
+    <span id="slide-counter" aria-live="polite">Lectura continua</span>
+    <button type="button" data-action="next">Siguiente →</button>
+    <button type="button" id="read-all" aria-pressed="false">Leer todo</button>
+    <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <p class="key-help">Teclas: ← → revelan u ocultan conceptos · Inicio/Fin abre diapositivas completas · Los controles de formularios conservan sus propias teclas.</p>
+  </footer>
+  <script src="navigation.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

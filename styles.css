@@ -1,0 +1,209 @@
+@font-face {
+  font-family: 'Fira Code Nerd Font';
+  src: url('assets/fonts/FiraCodeNerdFont-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code Nerd Font';
+  src: url('assets/fonts/FiraCodeNerdFont-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --ink: #d9f5ff;
+  --muted: #8db4c4;
+  --bg: #030912;
+  --panel: #071625;
+  --line: #1d5064;
+  --cyan: #57d8ef;
+  --blue: #3b89c9;
+  --focus: #fff2a8;
+  --space: clamp(1rem, 3vw, 2.5rem);
+}
+
+* { box-sizing: border-box; }
+code, pre, input, textarea, select { font-family: inherit; }
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Fira Code Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.55;
+}
+body {
+  margin: 0;
+  background-image: linear-gradient(rgba(87, 216, 239, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(87, 216, 239, .035) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.skip-link { position: absolute; left: -999px; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 4; background: var(--focus); color: #111; padding: .5rem; }
+.topbar, main, .controls { max-width: 72rem; margin: auto; padding: var(--space); }
+.topbar { border-bottom: 1px solid var(--line); }
+h1, h2 { line-height: 1.15; margin: .25rem 0 1rem; }
+h1 { font-size: clamp(2rem, 6vw, 4.25rem); letter-spacing: -.05em; }
+h2 { font-size: clamp(1.55rem, 3vw, 2.6rem); max-width: 26ch; }
+.eyebrow, .kicker { color: var(--cyan); font-size: .78rem; letter-spacing: .12em; }
+.lede, .notice, figcaption, .key-help { color: var(--muted); }
+a, button, summary { color: var(--cyan); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.source-link { display: inline-block; margin-top: .5rem; }
+.module-menu { margin-bottom: var(--space); }
+.module-menu summary { cursor: pointer; }
+.module-index { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .75rem; }
+.module-index a, button {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: .45rem .65rem;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+.module-index a:hover, button:hover { border-color: var(--cyan); color: #fff; }
+.slides { display: grid; gap: 1.25rem; }
+.slide {
+  min-height: 30rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  padding: clamp(1.25rem, 4vw, 4rem);
+  background: linear-gradient(135deg, rgba(7, 22, 37, .98), rgba(3, 9, 18, .96));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slide p { max-width: 70ch; font-size: clamp(1rem, 1.8vw, 1.2rem); }
+.diagram, .timeline {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px dashed var(--line);
+  max-width: 52rem;
+}
+.diagram span, .timeline span { border: 1px solid var(--blue); padding: .65rem; color: var(--ink); text-align: center; }
+.diagram b { color: var(--cyan); }
+.diagram figcaption, .timeline figcaption { width: 100%; font-size: .85rem; }
+.three span, .split span { flex: 1; }
+.split { justify-content: space-between; }
+.seven { gap: .25rem; }
+.seven span { font-size: .78rem; }
+pre { max-width: 48rem; overflow: auto; background: #02070d; border: 1px solid var(--line); padding: 1rem; color: #c7edff; }
+details { max-width: 65ch; margin-top: 1rem; border-top: 1px solid var(--line); padding-top: .75rem; }
+summary { cursor: pointer; }
+.source-access { margin-top: var(--space); border-top: 1px solid var(--line); padding-top: var(--space); }
+.controls { display: none; }
+.progress { height: .3rem; background: #102a38; width: 100%; }
+.progress i { display: block; height: 100%; width: 0; background: var(--cyan); transition: width .2s ease; }
+.key-help { margin: 0; width: 100%; font-size: .75rem; }
+
+/* The enhanced view is a presentation shell: header, one scrollable slide, controls. */
+.js, .js body { block-size: 100%; }
+.js body { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; overflow: hidden; }
+.js .topbar {
+  width: 100%;
+  max-width: none;
+  padding: .45rem max(1rem, 3vw);
+  display: flex;
+  align-items: baseline;
+  gap: .7rem;
+}
+.js .topbar .eyebrow, .js .topbar .lede { display: none; }
+.js .topbar h1 { margin: 0; font-size: clamp(1rem, 2vw, 1.35rem); letter-spacing: 0; }
+.js .topbar .source-link { margin: 0 0 0 auto; font-size: .8rem; }
+.js main {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: .45rem max(1rem, 3vw);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.js .module-menu { margin: 0 0 .45rem; position: relative; z-index: 2; }
+.js .module-menu summary { font-size: .8rem; }
+.js .module-index { position: absolute; margin: .3rem 0 0; padding: .6rem; max-width: min(36rem, 94vw); background: var(--panel); border: 1px solid var(--line); }
+.js .slides { display: block; min-height: 0; }
+.js .slide { display: none; }
+@keyframes slide-enter-forward {
+  from { opacity: 0; transform: translateX(.8rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-enter-backward {
+  from { opacity: 0; transform: translateX(-.8rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes concept-reveal {
+  from { opacity: 0; transform: translateX(.5rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.js .slide.is-active {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(1.1rem, 4vw, 4rem);
+  animation: slide-enter-forward .22s ease-out both;
+}
+.js .slide.is-active[data-direction="backward"] { animation-name: slide-enter-backward; }
+.js:not(.read-all) .fragment.is-revealed { animation: concept-reveal .2s ease-out both; }
+.js:not(.read-all) .fragment[hidden] { display: none !important; }
+.js .source-access { display: none; }
+.js .controls {
+  display: flex;
+  width: 100%;
+  max-width: none;
+  padding: .4rem max(1rem, 3vw) .5rem;
+  border-top: 1px solid var(--line);
+  background: rgba(3, 9, 18, .98);
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.js .controls button { padding: .3rem .55rem; font-size: .82rem; }
+.js .controls span { margin-inline: auto; font-size: .82rem; }
+.js .key-help { display: none; }
+.js .controls .progress { order: 3; }
+.js.read-all body { display: block; overflow: auto; }
+.js.read-all .topbar, .js.read-all main, .js.read-all .controls { max-width: 72rem; margin: auto; }
+.js.read-all .topbar { padding: var(--space); display: block; }
+.js.read-all .topbar .eyebrow, .js.read-all .topbar .lede { display: block; }
+.js.read-all .topbar h1 { font-size: clamp(2rem, 6vw, 4.25rem); letter-spacing: -.05em; }
+.js.read-all .topbar .source-link { margin-top: .5rem; }
+.js.read-all main { display: block; height: auto; overflow: visible; padding: var(--space); }
+.js.read-all .module-menu { margin-bottom: var(--space); }
+.js.read-all .module-index { position: static; }
+.js.read-all .slides { display: grid; gap: 1.25rem; }
+.js.read-all .slide { display: flex; height: auto; min-height: 30rem; overflow: visible; }
+.js.read-all .source-access { display: block; }
+.js.read-all .controls { position: static; display: flex; }
+
+@media (max-width: 38rem) {
+  .slide { min-height: auto; }
+  .diagram { align-items: stretch; }
+  .diagram b { display: none; }
+  .diagram span { width: 100%; }
+  .js .topbar { padding-block: .35rem; }
+  .js .controls { gap: .35rem; }
+  .js .controls span { order: -1; width: 100%; margin: 0; }
+  .js .slide.is-active { justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+@media print {
+  body, .js body { display: block; overflow: visible; background: #fff; color: #000; }
+  .topbar, main, .js .topbar, .js main { max-width: none; height: auto; padding: 1rem; }
+  .slide, .js .slide, .js .slide.is-active { display: flex !important; height: auto; min-height: auto; overflow: visible; color: #000; background: #fff; border-color: #777; break-after: page; }
+  .js:not(.read-all) .slide > .fragment[hidden] { display: block !important; }
+  .slide, .fragment { animation: none !important; }
+  .controls, .js .controls, .module-menu, .skip-link { display: none; }
+  .source-access, .js .source-access { display: block; }
+  .diagram span, .timeline span { border-color: #555; }
+}
