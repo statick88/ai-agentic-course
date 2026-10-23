@@ -1,6 +1,6 @@
 # Fuentes y notas de atribución
 
-Este curso está escrito de forma independiente. Las fuentes siguientes permiten comprobar afirmaciones o profundizar; no implican afiliación, aval ni reproducción de contenido.
+Esta presentación está escrita de forma independiente. Las fuentes siguientes permiten comprobar afirmaciones o profundizar; no implican afiliación, aval ni reproducción de contenido.
 
 ## Hechos históricos y técnicos
 
@@ -23,7 +23,7 @@ Las descripciones se mantienen deliberadamente conservadoras: esta presentación
 
 - *The Amazing Gentleman Programming Book*, capítulo 20, “De Token a Agente”. https://the-amazing-gentleman-programming-book.vercel.app/es/book/Chapter20_From-Token-to-Agent
 
-El enlace es una referencia de lectura pública y una base temática: el curso no copia su prosa, código ni ilustraciones. El capítulo articula modelo, inferencia, contexto, harness, conocimiento, patrones y proceso; no atribuye ODD ni RDD. El responsable editorial y los derechos/licencia del libro siguen **pendientes** de confirmación antes de reutilizar cualquier material atribuible.
+El enlace es una referencia de lectura pública y una base temática: la presentación no copia su prosa, código ni ilustraciones. El capítulo articula modelo, inferencia, contexto, harness, conocimiento, patrones y proceso; no atribuye ODD ni RDD. El responsable editorial y los derechos/licencia del libro siguen **pendientes** de confirmación antes de reutilizar cualquier material atribuible.
 
 ## Preparación para publicación
 

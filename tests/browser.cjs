@@ -64,11 +64,10 @@ const timeout = setTimeout(() => { console.error('Browser check timeout'); brows
   await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39 });
   assert.equal(await evaluate('document.querySelector(".slide.is-active").id'), 'm1-bienvenida');
   assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 1);
-  assert.equal(await evaluate('document.querySelector(".slide.is-active > details.fragment").getAttribute("aria-hidden")'), 'true');
-  assert.equal(await evaluate('document.querySelector(".slide.is-active > details.fragment").inert'), true);
+  assert.equal(await evaluate('document.querySelector(".slide.is-active > figure.fragment").getAttribute("aria-hidden")'), 'true');
+  assert.equal(await evaluate('document.querySelector(".slide.is-active > figure.fragment").inert'), true);
   await evaluate('document.querySelector("[data-action=next]").click()');
-  await evaluate('document.querySelector("[data-action=next]").click()');
-  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 3);
+  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 2);
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
   const desktopTimeline = await evaluate(`new Promise(resolve => requestAnimationFrame(() => {
     const slide = document.querySelector('#m1-bienvenida');
@@ -84,10 +83,10 @@ const timeout = setTimeout(() => { console.error('Browser check timeout'); brows
   await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowLeft', code: 'ArrowLeft', windowsVirtualKeyCode: 37 });
   await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowLeft', code: 'ArrowLeft', windowsVirtualKeyCode: 37 });
   assert.equal(await evaluate('document.querySelector(".slide.is-active").id'), 'm1-bienvenida');
-  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 3);
+  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 2);
   await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowLeft', code: 'ArrowLeft', windowsVirtualKeyCode: 37 });
   await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowLeft', code: 'ArrowLeft', windowsVirtualKeyCode: 37 });
-  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 2);
+  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 1);
   await command('Emulation.setDeviceMetricsOverride', { width: 320, height: 900, deviceScaleFactor: 1, mobile: false });
   const timelineLayout = await evaluate(`new Promise(resolve => requestAnimationFrame(() => {
     const slide = document.querySelector('#m1-bienvenida');
@@ -103,7 +102,7 @@ const timeout = setTimeout(() => { console.error('Browser check timeout'); brows
   assert.equal(await evaluate('document.querySelectorAll(".fragment[hidden]").length'), 0);
   await evaluate('document.querySelector("#read-all").click()');
   assert.equal(await evaluate('document.querySelector(".slide.is-active").id'), 'm1-bienvenida');
-  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 2);
+  assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 1);
   await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'End', code: 'End', windowsVirtualKeyCode: 35 });
   await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'End', code: 'End', windowsVirtualKeyCode: 35 });
   assert.equal(await evaluate('document.querySelector("#slide-counter").textContent'), `Diapositiva ${slideCount} / ${slideCount}`);
@@ -115,6 +114,7 @@ const timeout = setTimeout(() => { console.error('Browser check timeout'); brows
   await evaluate(`document.querySelector('.module-menu').open = true; document.querySelector('.module-index a[href="#m5-metodos"]').click()`);
   assert.equal(await evaluate('document.querySelector(".slide.is-active").id'), 'm5-metodos');
   assert.equal(await evaluate('document.querySelectorAll(".slide.is-active > .fragment:not([hidden])").length'), 1);
+  assert.match(await evaluate('document.querySelector("#m5-metodos > .fragment").textContent'), /ambigüedad, la incertidumbre y la evidencia/);
   assert.equal(await evaluate('document.activeElement.tagName'), 'H2');
   assert.equal(await evaluate('document.querySelector(".module-menu").open'), false);
   await evaluate('location.hash = "m5-odd"; new Promise(resolve => window.addEventListener("hashchange", resolve, {once:true}))');

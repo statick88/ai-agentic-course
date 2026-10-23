@@ -3,20 +3,43 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 
 const html = fs.readFileSync('index.html', 'utf8');
+const readme = fs.readFileSync('README.md', 'utf8');
 const sources = fs.readFileSync('SOURCES.md', 'utf8');
 
 function positionOf(id) {
   return html.indexOf(`id="${id}"`);
 }
 
-test('el curso conserva contenido semántico y accesible sin JavaScript', () => {
+test('la presentación conserva contenido semántico y accesible sin JavaScript', () => {
   assert.match(html, /<article class="slide"/);
-  assert.ok((html.match(/<article class="slide"/g) || []).length >= 28);
+  assert.equal((html.match(/<article class="[^"]*\bslide\b[^"]*"/g) || []).length, 29);
   assert.match(html, /<h1>/);
   assert.match(html, /<details>/);
-  assert.match(html, /Objetivos:/);
-  assert.match(html, /cuestionario Python/);
+  assert.match(html, /Objetivo: practicar listas en Python/);
   assert.match(html, /<aside class="source-access"/);
+});
+
+test('el encuadre visible describe una presentación y conserva rutas públicas', () => {
+  assert.match(html, /<meta name="description" content="Presentación independiente/);
+  assert.match(html, /<title>De token a agente \| Presentación de IA<\/title>/);
+  assert.match(html, /PRESENTACIÓN INDEPENDIENTE/);
+  assert.match(html, /aria-label="Secciones de la presentación"/);
+  assert.match(html, /aria-label="Diapositivas de la presentación"/);
+  assert.match(html, /id="course"/);
+  assert.doesNotMatch(html, /<title>[\s\S]*Curso de IA/);
+  assert.match(readme, /^Presentación web estática/m);
+  assert.match(sources, /^Esta presentación está escrita/m);
+});
+
+test('la presentación no impone objetivos por módulo', () => {
+  for (const id of ['m2-fundamentos', 'm3-llm', 'm4-agentes', 'm5-metodos', 'm6-ecosistema']) {
+    const module = html.match(new RegExp(`<article class="slide" id="${id}">([\\s\\S]*?)<\\/article>`))?.[1];
+    assert.ok(module, `${id} existe`);
+    assert.doesNotMatch(module, /Objetivos:/i);
+  }
+  const history = html.match(/<article class="slide timeline-slide" id="m1-bienvenida">([\s\S]*?)<\/article>/)?.[1];
+  assert.ok(history, 'la cronología existe');
+  assert.doesNotMatch(history, /Objetivo ampliado/i);
 });
 
 test('la historia es una única línea del tiempo antes de fundamentos', () => {

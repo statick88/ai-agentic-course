@@ -9,7 +9,7 @@
 .timeline-slide .timeline-events {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: .6rem;
+  gap: .6rem 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -17,10 +17,8 @@
 
 .timeline-slide .timeline-events > li {
   min-width: 0;
-  padding: .65rem .75rem;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--blue);
-  background: rgba(3, 9, 18, .58);
+  padding: .4rem 0;
+  border-top: 1px solid var(--line);
 }
 
 .timeline-slide .timeline-events time {
@@ -31,66 +29,38 @@
 }
 
 .timeline-slide .timeline-events h3 {
-  margin: .2rem 0 0;
-  font-size: 1rem;
+  margin: .1rem 0 0;
+  font-size: .95rem;
   line-height: 1.25;
 }
 
 .timeline-slide .timeline-events p {
   max-width: none;
   margin: .45rem 0 0;
-  font-size: .94rem;
-  line-height: 1.45;
+  font-size: .9rem;
+  line-height: 1.4;
 }
 
 .timeline-slide .timeline-events details {
   max-width: none;
-  margin-top: .5rem;
-  padding-top: .45rem;
+  margin-top: .4rem;
+  padding-top: .35rem;
 }
 
-.timeline-slide .timeline-events summary {
-  font-size: .85rem;
-}
-
-.js .timeline-slide.is-active {
-  justify-content: flex-start;
-}
-
-.timeline-slide .history-timeline figcaption {
-  margin-top: .75rem;
-  font-size: .9rem;
-}
+.timeline-slide .timeline-events summary { font-size: .8rem; }
+.js .timeline-slide.is-active { justify-content: flex-start; }
+.timeline-slide .history-timeline figcaption { margin-top: .75rem; font-size: .9rem; }
 
 @media (max-width: 56rem) {
-  .timeline-slide .timeline-events {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .timeline-slide .timeline-events { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 38rem) {
-  .timeline-slide .timeline-events {
-    grid-template-columns: 1fr;
-    gap: .55rem;
-  }
-
-  .timeline-slide .timeline-events > li {
-    padding: .75rem;
-  }
-
-  .timeline-slide .timeline-events p {
-    font-size: .9rem;
-  }
+  .timeline-slide .timeline-events { grid-template-columns: 1fr; gap: .55rem; }
+  .timeline-slide .timeline-events > li { padding: .55rem 0; }
+  .timeline-slide .timeline-events p { font-size: .9rem; }
 }
 
 @media print {
-  .timeline-slide .timeline-events > li {
-    background: #fff;
-    border-color: #777;
-  }
-
-  .timeline-slide .timeline-events > li::before {
-    border-color: #000;
-    background: #fff;
-  }
+  .timeline-slide .timeline-events > li { border-color: #777; }
 }

@@ -1,6 +1,6 @@
 # De token a agente
 
-Curso web estático e independiente en español sobre fundamentos de IA, LLM, sistemas agénticos y prácticas de desarrollo. No implica afiliación con los proyectos o referencias citados.
+Presentación web estática e independiente en español sobre fundamentos de IA, LLM, sistemas agénticos y prácticas de desarrollo. No implica afiliación con los proyectos o referencias citados.
 
 [Presentación web](https://statick88.github.io/ai-agentic-course/) · [Curso de Python](https://statick88.github.io/Course_of_python/)
 
@@ -16,7 +16,7 @@ Después visite `http://localhost:8080`.
 
 ## Uso y accesibilidad
 
-- Abra **Índice de módulos** para saltar a una sección o use los botones Anterior/Siguiente.
+- Abra **Índice de la presentación** para saltar a una sección o use los botones Anterior/Siguiente.
 - En modo diapositivas, el título permanece visible; cada pulsación de **→** o **Siguiente** revela un concepto y solo después avanza. **←** o **Anterior** lo oculta y, al volver, deja completos los conceptos de la diapositiva previa.
 - Los enlaces `#id-de-diapositiva`, el índice y las teclas Inicio/Fin son navegación directa: abren la diapositiva solicitada con sus conceptos ya visibles.
 - Las flechas, Inicio/Fin no interceptan teclas de controles interactivos ni combinaciones modificadas.
@@ -33,7 +33,7 @@ node --check app.js
 node --check navigation.js
 ```
 
-Las pruebas cubren el contrato de navegación y la estructura/contenido educativo.
+Las pruebas cubren el contrato de navegación y la estructura/contenido de la presentación.
 
 Para ejecutar la regresión en un navegador Chromium ya instalado, sin instalar paquetes:
 
@@ -45,7 +45,7 @@ Comprueba navegación, foco, enlaces internos, lectura accesible, fases ODD y au
 
 ## Tipografía
 
-La presentación incluye **Fira Code Nerd Font** autoalojada, en regular y negrita. No exige instalar fuentes ni usa un CDN. La [procedencia, revisión fijada, licencia y sumas de integridad](assets/fonts/README.md) acompañan los archivos; el texto conserva una fuente alternativa durante la carga.
+La presentación usa una composición minimalista oscura con acentos cian y **Fira Code Nerd Font** autoalojada, en regular y negrita. No exige instalar fuentes ni usa un CDN. La [procedencia, revisión fijada, licencia y sumas de integridad](assets/fonts/README.md) acompañan los archivos; el texto conserva una fuente alternativa durante la carga.
 
 ## Autor y contacto
 
@@ -57,7 +57,7 @@ GitHub Pages: https://statick88.github.io/ai-agentic-course/
 
 ## Material y atribución
 
-El curso es una explicación original. La referencia pública al capítulo del libro figura como lectura complementaria en `SOURCES.md`; no se reproduce su texto ni ilustraciones. ODD y RDD se atribuyen a la documentación de Gentle AI, no a ese capítulo.
+La presentación es una explicación original. La referencia pública al capítulo del libro figura como lectura complementaria en `SOURCES.md`; no se reproduce su texto ni ilustraciones. ODD y RDD se atribuyen a la documentación de Gentle AI, no a ese capítulo.
 
 ## Publicación
 

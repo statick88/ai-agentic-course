@@ -15,14 +15,14 @@
 }
 
 :root {
-  --ink: #d9f5ff;
-  --muted: #8db4c4;
-  --bg: #030912;
-  --panel: #071625;
-  --line: #1d5064;
-  --cyan: #57d8ef;
-  --blue: #3b89c9;
-  --focus: #fff2a8;
+  --ink: #f2f5f5;
+  --muted: #a9b4b6;
+  --bg: #080a0c;
+  --surface: #0d1013;
+  --line: #2a3337;
+  --cyan: #72e5e5;
+  --blue: #54aeb5;
+  --focus: #fff3a3;
   --space: clamp(1rem, 3vw, 2.5rem);
 }
 
@@ -34,11 +34,7 @@ html {
   font-family: 'Fira Code Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   line-height: 1.55;
 }
-body {
-  margin: 0;
-  background-image: linear-gradient(rgba(87, 216, 239, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(87, 216, 239, .035) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
+body { margin: 0; background: var(--bg); }
 .skip-link { position: absolute; left: -999px; }
 .skip-link:focus { left: 1rem; top: 1rem; z-index: 4; background: var(--focus); color: #111; padding: .5rem; }
 .topbar, main, .controls { max-width: 72rem; margin: auto; padding: var(--space); }
@@ -56,20 +52,17 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .module-index { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .75rem; }
 .module-index a, button {
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: transparent;
   padding: .45rem .65rem;
   text-decoration: none;
   font: inherit;
   cursor: pointer;
 }
-.module-index a:hover, button:hover { border-color: var(--cyan); color: #fff; }
+.module-index a:hover, button:hover { border-color: var(--cyan); color: var(--ink); }
 .slides { display: grid; gap: 1.25rem; }
 .slide {
   min-height: 30rem;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--blue);
   padding: clamp(1.25rem, 4vw, 4rem);
-  background: linear-gradient(135deg, rgba(7, 22, 37, .98), rgba(3, 9, 18, .96));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,23 +74,21 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   gap: .7rem;
   flex-wrap: wrap;
   margin: 1rem 0;
-  padding: 1rem;
-  border: 1px dashed var(--line);
   max-width: 52rem;
 }
-.diagram span, .timeline span { border: 1px solid var(--blue); padding: .65rem; color: var(--ink); text-align: center; }
+.diagram span, .timeline span { border-bottom: 1px solid var(--line); padding: .35rem 0; color: var(--ink); text-align: center; }
 .diagram b { color: var(--cyan); }
 .diagram figcaption, .timeline figcaption { width: 100%; font-size: .85rem; }
 .three span, .split span { flex: 1; }
 .split { justify-content: space-between; }
-.seven { gap: .25rem; }
+.seven { gap: .5rem; }
 .seven span { font-size: .78rem; }
-pre { max-width: 48rem; overflow: auto; background: #02070d; border: 1px solid var(--line); padding: 1rem; color: #c7edff; }
+pre { max-width: 48rem; overflow: auto; background: var(--surface); border-block: 1px solid var(--line); padding: 1rem; color: var(--ink); }
 details { max-width: 65ch; margin-top: 1rem; border-top: 1px solid var(--line); padding-top: .75rem; }
 summary { cursor: pointer; }
 .source-access { margin-top: var(--space); border-top: 1px solid var(--line); padding-top: var(--space); }
 .controls { display: none; }
-.progress { height: .3rem; background: #102a38; width: 100%; }
+.progress { height: .2rem; background: var(--line); width: 100%; }
 .progress i { display: block; height: 100%; width: 0; background: var(--cyan); transition: width .2s ease; }
 .key-help { margin: 0; width: 100%; font-size: .75rem; }
 
@@ -127,21 +118,12 @@ summary { cursor: pointer; }
 }
 .js .module-menu { margin: 0 0 .45rem; position: relative; z-index: 2; }
 .js .module-menu summary { font-size: .8rem; }
-.js .module-index { position: absolute; margin: .3rem 0 0; padding: .6rem; max-width: min(36rem, 94vw); background: var(--panel); border: 1px solid var(--line); }
+.js .module-index { position: absolute; margin: .3rem 0 0; padding: .6rem; max-width: min(36rem, 94vw); background: var(--surface); border: 1px solid var(--line); }
 .js .slides { display: block; min-height: 0; }
 .js .slide { display: none; }
-@keyframes slide-enter-forward {
-  from { opacity: 0; transform: translateX(.8rem); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slide-enter-backward {
-  from { opacity: 0; transform: translateX(-.8rem); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes concept-reveal {
-  from { opacity: 0; transform: translateX(.5rem); }
-  to { opacity: 1; transform: translateX(0); }
-}
+@keyframes slide-enter-forward { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-enter-backward { from { opacity: 0; } to { opacity: 1; } }
+@keyframes concept-reveal { from { opacity: 0; } to { opacity: 1; } }
 .js .slide.is-active {
   display: flex;
   height: 100%;
@@ -149,10 +131,10 @@ summary { cursor: pointer; }
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: clamp(1.1rem, 4vw, 4rem);
-  animation: slide-enter-forward .22s ease-out both;
+  animation: slide-enter-forward .16s ease-out both;
 }
 .js .slide.is-active[data-direction="backward"] { animation-name: slide-enter-backward; }
-.js:not(.read-all) .fragment.is-revealed { animation: concept-reveal .2s ease-out both; }
+.js:not(.read-all) .fragment.is-revealed { animation: concept-reveal .14s ease-out both; }
 .js:not(.read-all) .fragment[hidden] { display: none !important; }
 .js .source-access { display: none; }
 .js .controls {
@@ -161,7 +143,7 @@ summary { cursor: pointer; }
   max-width: none;
   padding: .4rem max(1rem, 3vw) .5rem;
   border-top: 1px solid var(--line);
-  background: rgba(3, 9, 18, .98);
+  background: var(--bg);
   align-items: center;
   gap: .5rem;
   flex-wrap: wrap;
